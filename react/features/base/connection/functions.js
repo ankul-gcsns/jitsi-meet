@@ -55,9 +55,8 @@ export function getInviteURL(stateOrGetState: Function | Object): string {
     }
 
     console.log('window: ', window);
-    console.log('window.parent: ', window.parent);
 
-    if (window.parent == window.top) {
+    if (window && window.parent) {
         console.log('has parent window');
         console.log('window.parent: ', window.parent);
         if (typeof window.parent.getJoiningUrl === 'function') {
