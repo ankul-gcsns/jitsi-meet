@@ -54,7 +54,10 @@ export function getInviteURL(stateOrGetState: Function | Object): string {
         throw new Error('Can not get invite URL - the app is not ready');
     }
 
-    if (window.parent != window.top) {
+    console.log('window: ', window);
+    console.log('window.parent: ', window.parent);
+
+    if (window.parent == window.top) {
         console.log('has parent window');
         console.log('window.parent: ', window.parent);
         if (typeof window.parent.getJoiningUrl === 'function') {
