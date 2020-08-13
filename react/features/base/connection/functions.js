@@ -54,6 +54,10 @@ export function getInviteURL(stateOrGetState: Function | Object): string {
         throw new Error('Can not get invite URL - the app is not ready');
     }
 
+    if (typeof window.getJoiningUrl === 'function') {
+        return window.getJoiningUrl();
+    }
+
     return getURLWithoutParams(locationURL).href;
 }
 
