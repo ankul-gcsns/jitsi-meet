@@ -55,19 +55,22 @@ export function getInviteURL(stateOrGetState: Function | Object): string {
     }
 
     console.log('window: ', window);
-
-    if (window && window.parent) {
-        console.log('has parent window');
-        console.log('window.parent: ', window.parent);
-        if (typeof window.parent.getJoiningUrl === 'function') {
-            return window.parent.getJoiningUrl();
-        }
-    } else {
-        console.log('No parent window');
-        if (typeof window.getJoiningUrl === 'function') {
-            return window.parent.getJoiningUrl();
-        }
+    if (typeof window.getJoiningUrl === 'function') {
+        return window.getJoiningUrl();
     }
+
+    // if (window && window.parent) {
+    //     console.log('has parent window');
+    //     console.log('window.parent: ', window.parent);
+    //     if (typeof window.parent.getJoiningUrl === 'function') {
+    //         return window.parent.getJoiningUrl();
+    //     }
+    // } else {
+    //     console.log('No parent window');
+    //     if (typeof window.getJoiningUrl === 'function') {
+    //         return window.getJoiningUrl();
+    //     }
+    // }
 
     return getURLWithoutParams(locationURL).href;
 }
